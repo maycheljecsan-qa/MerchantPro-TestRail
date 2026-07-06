@@ -8,8 +8,8 @@ export default async function handler(req, res) {
             "https://youtap.testrail.io/index.php?/api/v2/get_run/782",
             {
                 auth: {
-                    username: process.env.TESTRAIL_EMAIL,
-                    password: process.env.TESTRAIL_API_KEY
+                    username: process.env.maychel.hutahaean@youtap.com,
+                    password: process.env.NheZpqdtQPswbWrELKqQ-gATrkBjisU.KLL3uiasC
                 }
             }
         );
