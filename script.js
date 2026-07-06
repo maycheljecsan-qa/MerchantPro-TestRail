@@ -7,6 +7,14 @@ fetch("/api/run")
   })
   .then((data) => {
     console.log("TestRail Response:", data);
+    console.log({
+  passed,
+  failed,
+  blocked,
+  untested,
+  retest,
+  total
+});
 
     const passed = Number(data.passed_count ?? 0);
     const failed = Number(data.failed_count ?? 0);
@@ -37,54 +45,48 @@ fetch("/api/run")
       window.testRailChart.destroy();
     }
 
-    window.testRailChart = new Chart(document.getElementById("pie"), {
-      type: "pie",
-      data: {
+    const ctx = document.getElementById("pie");
+
+window.testRailChart = new Chart(ctx, {
+    type: "pie",
+    data: {
         labels: [
-          "Passed",
-          "Failed",
-          "Blocked",
-          "Untested",
-          "Retest",
+            "Passed",
+            "Failed",
+            "Blocked",
+            "Untested",
+            "Retest"
         ],
-        datasets: [
-          {
-            data: [
-              passed,
-              failed,
-              blocked,
-              untested,
-              retest,
-            ],
-            backgroundColor: [
-              "#39b54a", // Passed
-              "#e91e63", // Failed
-              "#555555", // Blocked
-              "#9e9e9e", // Untested
-              "#ffb300", // Retest
-            ],
-            borderColor: "#ffffff",
-            borderWidth: 2,
-          },
-        ],
-      },
-      options: {
+       datasets: [{
+    data: [
+        passed,
+        failed,
+        blocked,
+        untested,
+        retest
+    ],
+    backgroundColor: [
+        "#3cb44b",
+        "#d7004d",
+        "#555555",
+        "#9e9e9e",
+        "#ffb400"
+    ],
+    borderColor: "#ffffff",
+    borderWidth: 2,
+    hoverOffset: 4
+}]
+    },
+    options: {
         responsive: true,
-        maintainAspectRatio: true,
+        maintainAspectRatio: false,
         plugins: {
-          legend: {
-            display: false,
-          },
-          tooltip: {
-            callbacks: {
-              label: function (context) {
-                return `${context.label}: ${context.raw}`;
-              },
-            },
-          },
-        },
-      },
-    });
+            legend: {
+                display: false
+            }
+        }
+    }
+});
   })
   .catch((err) => {
     console.error(err);
