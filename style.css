@@ -1,7 +1,13 @@
 body{
-    font-family:Arial,sans-serif;
-    background:#eef3f8;
-    margin:40px;
+    background:#edf3f8;
+    font-family:Arial,Helvetica,sans-serif;
+    margin:0;
+    padding:20px;
+}
+
+.container{
+    max-width:1500px;
+    margin:auto;
 }
 
 .dashboard{
@@ -10,49 +16,66 @@ body{
 }
 
 .card{
-
     background:white;
-    border-radius:8px;
-    box-shadow:0 2px 6px rgba(0,0,0,.1);
+    border-radius:4px;
+    box-shadow:0 1px 3px rgba(0,0,0,.08);
     padding:20px;
-
 }
 
-.card:first-child{
+.left-card{
 
-    width:700px;
+    flex:1.3;
 
     display:flex;
     align-items:center;
 
 }
 
-.chart-area{
+.right-card{
 
-    width:280px;
-    height:280px;
+    flex:1;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+}
+
+.chart-container{
+
+    width:230px;
+    height:230px;
+
+    position:relative;
+
+    flex-shrink:0;
 
 }
 
 .summary{
 
-    margin-left:30px;
-    line-height:40px;
-    font-size:18px;
+    margin-left:40px;
+
+    width:320px;
 
 }
 
-.percentage{
+.summary-item{
 
-    width:350px;
-    text-align:center;
+    display:flex;
+
+    align-items:center;
+
+    margin-bottom:18px;
+
+    font-size:28px;
 
 }
 
-.percentage h2{
+.summary-item strong{
 
-    font-size:60px;
-    margin-top:60px;
+    margin-left:auto;
 
 }
 
@@ -61,13 +84,27 @@ body{
     width:16px;
     height:16px;
     border-radius:50%;
-    display:inline-block;
-    margin-right:10px;
+    margin-right:15px;
 
 }
 
-.passed{background:#39b54a;}
-.failed{background:#ff0066;}
-.blocked{background:#555;}
-.untested{background:#999;}
-.retest{background:#ffb000;}
+.pass-rate{
+
+    font-size:70px;
+    font-weight:300;
+
+}
+
+.passed-text{
+
+    font-size:28px;
+
+}
+
+.untested-text{
+
+    margin-top:20px;
+
+    font-size:22px;
+
+}
