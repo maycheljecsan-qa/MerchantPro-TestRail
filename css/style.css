@@ -1,13 +1,25 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
 body{
     background:#edf3f8;
-    font-family:Arial,Helvetica,sans-serif;
-    margin:0;
-    padding:20px;
+    font-family:Arial, Helvetica, sans-serif;
+    color:#333;
 }
 
 .container{
-    max-width:1500px;
-    margin:auto;
+    width:95%;
+    max-width:1700px;
+    margin:30px auto;
+}
+
+.title{
+    font-size:26px;
+    font-weight:700;
+    margin-bottom:25px;
 }
 
 .dashboard{
@@ -16,82 +28,126 @@ body{
 }
 
 .card{
-    background:white;
+    background:#fff;
     border-radius:4px;
-    box-shadow:0 1px 3px rgba(0,0,0,.08);
-    padding:20px;
+    box-shadow:0 1px 2px rgba(0,0,0,.08);
+    padding:24px;
 }
 
 .left-card{
-    flex:1.6;
-    min-height:280px;
+    flex:1.3;
+    display:flex;
+    align-items:center;
+    min-height:320px;
 }
 
 .right-card{
-
-    flex:1;
-
+    flex:.9;
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
-
+    min-height:320px;
 }
 
 .chart-container{
-    width:180px;
-    height:180px;
+    width:190px;
+    height:190px;
     position:relative;
     flex-shrink:0;
+    margin-left:20px;
+}
+
+.chart-container canvas{
+    width:100% !important;
+    height:100% !important;
 }
 
 .summary{
-
-    margin-left:40px;
-
-    width:320px;
-
+    margin-left:50px;
+    width:330px;
 }
 
 .summary-item{
-    font-size:15px;
-    margin-bottom:12px;
-}
-
-.summary-item strong{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
     font-size:16px;
 }
 
+.left{
+    display:flex;
+    align-items:center;
+}
+
 .summary-item strong{
-
-    margin-left:auto;
-
+    font-size:18px;
+    font-weight:bold;
 }
 
 .dot{
-
-    width:16px;
-    height:16px;
+    width:22px;
+    height:22px;
     border-radius:50%;
     margin-right:15px;
+}
 
+.passed{
+    background:#3cb44b;
+}
+
+.failed{
+    background:#d7004d;
+}
+
+.blocked{
+    background:#555555;
+}
+
+.untested{
+    background:#9e9e9e;
+}
+
+.retest{
+    background:#ffb400;
 }
 
 .pass-rate{
-    font-size:58px;
-    font-weight:400;
+    font-size:72px;
+    font-weight:300;
+    line-height:1;
 }
 
 .passed-text{
-    font-size:24px;
+    font-size:28px;
+    margin-top:10px;
 }
 
 .untested-text{
-    font-size:16px;
+    margin-top:18px;
     color:#555;
+    font-size:18px;
 }
 
-.chart-container canvas {
-    width: 100% !important;
-    height: 100% !important;
+@media (max-width:1000px){
+
+.dashboard{
+    flex-direction:column;
+}
+
+.left-card{
+    flex-direction:column;
+    text-align:center;
+}
+
+.summary{
+    width:100%;
+    margin:30px 0 0;
+}
+
+.chart-container{
+    margin:0;
+}
+
 }

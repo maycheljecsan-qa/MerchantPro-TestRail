@@ -1,85 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Merchant Pro 5.1</title>
 
+    <title>Merchant Pro 5.1 - TestRail Dashboard</title>
+
+    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+    <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-<div class="container">
+    <div class="container">
 
-    <h1>Merchant Pro 5.1</h1>
+        <h1 class="title">Merchant Pro 5.1</h1>
 
-    <div class="dashboard">
+        <div class="dashboard">
 
-        <!-- Left Card -->
-        <div class="card left-card">
+            <!-- LEFT CARD -->
+            <div class="card left-card">
 
-            <div class="chart-container">
-                <canvas id="pie"></canvas>
+                <div class="chart-container">
+                    <canvas id="pie"></canvas>
+                </div>
+
+                <div class="summary">
+
+                    <div class="summary-item">
+                        <div class="left">
+                            <span class="dot passed"></span>
+                            <span>Passed</span>
+                        </div>
+                        <strong id="passed">0</strong>
+                    </div>
+
+                    <div class="summary-item">
+                        <div class="left">
+                            <span class="dot failed"></span>
+                            <span>Failed</span>
+                        </div>
+                        <strong id="failed">0</strong>
+                    </div>
+
+                    <div class="summary-item">
+                        <div class="left">
+                            <span class="dot blocked"></span>
+                            <span>Blocked</span>
+                        </div>
+                        <strong id="blocked">0</strong>
+                    </div>
+
+                    <div class="summary-item">
+                        <div class="left">
+                            <span class="dot untested"></span>
+                            <span>Untested</span>
+                        </div>
+                        <strong id="untested">0</strong>
+                    </div>
+
+                    <div class="summary-item">
+                        <div class="left">
+                            <span class="dot retest"></span>
+                            <span>Retest</span>
+                        </div>
+                        <strong id="retest">0</strong>
+                    </div>
+
+                </div>
+
             </div>
 
-            <div class="summary">
+            <!-- RIGHT CARD -->
+            <div class="card right-card">
 
-                <div class="summary-item">
-                    <span class="dot passed"></span>
-                    <span>Passed</span>
-                    <strong id="passed">0</strong>
+                <div id="passrate" class="pass-rate">
+                    0%
                 </div>
 
-                <div class="summary-item">
-                    <span class="dot failed"></span>
-                    <span>Failed</span>
-                    <strong id="failed">0</strong>
+                <div class="passed-text">
+                    passed
                 </div>
 
-                <div class="summary-item">
-                    <span class="dot blocked"></span>
-                    <span>Blocked</span>
-                    <strong id="blocked">0</strong>
+                <div id="untestedText" class="untested-text">
+                    0 / 0 untested
                 </div>
 
-                <div class="summary-item">
-                    <span class="dot untested"></span>
-                    <span>Untested</span>
-                    <strong id="untested">0</strong>
-                </div>
-
-                <div class="summary-item">
-                    <span class="dot retest"></span>
-                    <span>Retest</span>
-                    <strong id="retest">0</strong>
-                </div>
-
-            </div>
-
-        </div>
-
-        <!-- Right Card -->
-        <div class="card right-card">
-
-            <div id="passrate" class="pass-rate">
-                0%
-            </div>
-
-            <div class="passed-text">
-                passed
-            </div>
-
-            <div id="untestedText" class="untested-text">
-                0 / 0 untested
             </div>
 
         </div>
 
     </div>
 
-</div>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Dashboard Script -->
+    <script src="./script.js"></script>
+
 </body>
+
 </html>
