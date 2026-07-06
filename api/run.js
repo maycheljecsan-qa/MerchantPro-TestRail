@@ -7,17 +7,17 @@ export default async function handler(req, res) {
       {
         auth: {
           username: process.env.TESTRAIL_EMAIL,
-          password: process.env.TESTRAIL_PASSWORD,
-        },
+          password: process.env.TESTRAIL_PASSWORD
+        }
       }
     );
 
-    return res.status(200).json(response.data);
+    res.status(200).json(response.data);
   } catch (error) {
     console.error(error.response?.data || error.message);
 
-    return res.status(error.response?.status || 500).json({
-      error: error.response?.data || error.message,
+    res.status(error.response?.status || 500).json({
+      error: error.response?.data || error.message
     });
   }
 }
