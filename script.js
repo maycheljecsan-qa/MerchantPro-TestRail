@@ -1,7 +1,7 @@
 fetch("/api/run")
   .then((response) => {
     if (!response.ok) {
-      throw new Error(`API Error : ${response.status}`);
+      throw new Error(`API Error: ${response.status}`);
     }
     return response.json();
   })
@@ -12,12 +12,12 @@ fetch("/api/run")
     // Get Data
     // ===========================
 
-    const passed = Number(data.passed_count || 0);
-    const failed = Number(data.failed_count || 0);
-    const blocked = Number(data.blocked_count || 0);
-    const untested = Number(data.untested_count || 0);
-    const retest = Number(data.retest_count || 0);
-    const skipped = Number(data.skipped_count || 0);
+    const passed = Number(data.passed_count ?? 0);
+    const failed = Number(data.failed_count ?? 0);
+    const blocked = Number(data.blocked_count ?? 0);
+    const untested = Number(data.untested_count ?? 0);
+    const retest = Number(data.retest_count ?? 0);
+    const skipped = Number(data.custom_status2_count ?? 0);
 
     const total =
       passed +
@@ -48,7 +48,7 @@ fetch("/api/run")
     // ===========================
 
     document.getElementById("passrate").textContent =
-      passRate + "%";
+      `${passRate}%`;
 
     document.getElementById("untestedText").textContent =
       `${untested} / ${total} untested`;
@@ -62,7 +62,7 @@ fetch("/api/run")
     }
 
     // ===========================
-    // Create Chart
+    // Create Pie Chart
     // ===========================
 
     const ctx = document
@@ -78,8 +78,7 @@ fetch("/api/run")
           "Failed",
           "Blocked",
           "Untested",
-          "Retest",
-          "Skipped"
+          "Retest"
         ],
 
         datasets: [
@@ -89,8 +88,7 @@ fetch("/api/run")
               failed,
               blocked,
               untested,
-              retest,
-              skipped,
+              retest
             ],
 
             backgroundColor: [
@@ -98,15 +96,14 @@ fetch("/api/run")
               "#d7004d", // Failed
               "#555555", // Blocked
               "#9e9e9e", // Untested
-              "#ffb400", // Retest
-              "#1e00ff", // Skipped
+              "#ffb400"  // Retest
             ],
 
             borderColor: "#ffffff",
             borderWidth: 2,
-            hoverOffset: 8,
-          },
-        ],
+            hoverOffset: 8
+          }
+        ]
       },
 
       options: {
@@ -115,30 +112,29 @@ fetch("/api/run")
 
         plugins: {
           legend: {
-            display: false,
+            display: false
           },
 
           tooltip: {
             callbacks: {
               label: function (context) {
-                return (
-                  context.label +
-                  ": " +
-                  context.raw
-                );
-              },
-            },
-          },
-        },
-      },
+                const percent = (
+                  (context.raw / total) *
+                  100
+                ).toFixed(1);
+
+                return `${context.label}: ${context.raw} (${percent}%)`;
+              }
+            }
+          }
+        }
+      }
     });
   })
   .catch((error) => {
     console.error(error);
 
-    document.getElementById("passrate").textContent =
-      "Error";
-
+    document.getElementById("passrate").textContent = "Error";
     document.getElementById("untestedText").textContent =
       "Unable to load TestRail data";
   });
