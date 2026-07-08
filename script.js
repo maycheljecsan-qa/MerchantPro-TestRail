@@ -17,13 +17,15 @@ fetch("/api/run")
     const blocked = Number(data.blocked_count || 0);
     const untested = Number(data.untested_count || 0);
     const retest = Number(data.retest_count || 0);
+    const skipped = Number(data.skipped_count || 0);
 
     const total =
       passed +
       failed +
       blocked +
       untested +
-      retest;
+      retest +
+      skipped;
 
     const passRate =
       total > 0
@@ -39,6 +41,7 @@ fetch("/api/run")
     document.getElementById("blocked").textContent = blocked;
     document.getElementById("untested").textContent = untested;
     document.getElementById("retest").textContent = retest;
+    document.getElementById("skipped").textContent = skipped;
 
     // ===========================
     // Update Right Card
@@ -76,6 +79,7 @@ fetch("/api/run")
           "Blocked",
           "Untested",
           "Retest",
+          "Skipped"
         ],
 
         datasets: [
@@ -86,6 +90,7 @@ fetch("/api/run")
               blocked,
               untested,
               retest,
+              skipped,
             ],
 
             backgroundColor: [
@@ -94,6 +99,7 @@ fetch("/api/run")
               "#555555", // Blocked
               "#9e9e9e", // Untested
               "#ffb400", // Retest
+              "#1e00ff", // Skipped
             ],
 
             borderColor: "#ffffff",
