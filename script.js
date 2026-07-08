@@ -32,6 +32,11 @@ fetch("/api/run")
         ? Math.round((passed / total) * 100)
         : 0;
 
+        const untestedRate =
+          total > 0
+            ? ((untested / total) * 100).toFixed(0)
+            : 0;
+
     // ===========================
     // Update Summary
     // ===========================
@@ -50,8 +55,9 @@ fetch("/api/run")
     document.getElementById("passrate").textContent =
       `${passRate}%`;
 
+
     document.getElementById("untestedText").textContent =
-      `${untested} / ${total} untested`;
+    `${untested} / ${total} untested (${untestedRate}%).`;
 
     // ===========================
     // Destroy Existing Chart
