@@ -97,7 +97,7 @@ fetch("/api/run")
               "#555555", // Blocked
               "#9e9e9e", // Untested
               "#ffb400", // Retest
-              "#2600ff"  // Skipped
+              "#5b2be0"  // Skipped
             ],
 
             borderColor: "#ffffff",
